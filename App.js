@@ -9,26 +9,25 @@
 
 import React from 'react';
 import {StyleSheet, TouchableOpacity, View, FlatList, Image} from 'react-native';
+import {getImages} from './services/images'
 
-const Card = () =>{
+const Card = ({image}) =>{
   return(
     <TouchableOpacity style = {styles.card}>
-    <Image style={styles.image}
-        source={{
-          uri: 'https://lh3.googleusercontent.com/HgQ7TyQjtD_SdRKpttwxyQjGk38tUXG_k5OBF1k95-XjEH8sfg5XLMgyUfwsGIcHJO5nJpgykGb9zjKPWBD8FKHu9HRCg3hFZOrzjco=s250',
-        }}/>
+    <Image style={styles.image} source={{uri: (image)}}/>
     </TouchableOpacity>
   );
 }
 
 const App = () => {
-  const numberofCards = [1,2,3,4,5,6,7,8]
+  const numberofCards = getImages()
+  
   return (
     <View style={styles.container}>
       <View style={styles.cards}>
         <FlatList
           data={numberofCards}
-          renderItem={(item) =><Card/>}
+          renderItem={({item}) =><Card image = {item}/>}
           keyExtractor={(item, i) => i}
           numColumns = {4}
         />
@@ -55,7 +54,7 @@ const styles = StyleSheet.create({
     height: 165,
   },
   image:{
-    borderWidth: 3,
+    borderWidth: 5,
     borderColor: 'black',
     borderRadius: 15,
     width: 165,

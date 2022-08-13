@@ -99,10 +99,10 @@ const randomUnique = ([...arr], n = 1) => {
 
 export function getImages(){
     let distinct = randomUnique(urls,4);
-    distinct.push(distinct);
+    distinct.push(distinct); //mirrors itself
     distinct = distinct.flat();
     distinct.pop()
-    distinct.sort(() => Math.random() - 0.5);
+    distinct.sort(() => Math.random() - 0.5); //shuffle
     return distinct;
 
 }
