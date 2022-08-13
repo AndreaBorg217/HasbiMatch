@@ -8,16 +8,21 @@
  */
 
 import React from 'react';
-import {StyleSheet, TouchableOpacity, View, FlatList} from 'react-native';
+import {StyleSheet, TouchableOpacity, View, FlatList, Image} from 'react-native';
 
 const Card = () =>{
   return(
-    <TouchableOpacity style = {styles.card}></TouchableOpacity>
+    <TouchableOpacity style = {styles.card}>
+    <Image style={styles.image}
+        source={{
+          uri: 'https://lh3.googleusercontent.com/HgQ7TyQjtD_SdRKpttwxyQjGk38tUXG_k5OBF1k95-XjEH8sfg5XLMgyUfwsGIcHJO5nJpgykGb9zjKPWBD8FKHu9HRCg3hFZOrzjco=s250',
+        }}/>
+    </TouchableOpacity>
   );
 }
 
 const App = () => {
-  const numberofCards = [1,2,3,4,5,6,7,8,9,10]
+  const numberofCards = [1,2,3,4,5,6,7,8]
   return (
     <View style={styles.container}>
       <View style={styles.cards}>
@@ -25,7 +30,7 @@ const App = () => {
           data={numberofCards}
           renderItem={(item) =><Card/>}
           keyExtractor={(item, i) => i}
-          numColumns = {5}
+          numColumns = {4}
         />
         </View>
     </View>
@@ -40,19 +45,22 @@ const styles = StyleSheet.create({
     backgroundColor:'#123',
   },
   cards:{
-    transform: [{translateY: 40}]
+    transform: [{translateY: 10}]
   },
   card: {
-    backgroundColor:'white',
     justifyContent: 'center',
     alignItems: 'center',
+    margin: 5,
+    width: 165,
+    height: 165,
+  },
+  image:{
     borderWidth: 3,
     borderColor: 'black',
     borderRadius: 15,
-    width: 130,
-    height: 130,
-    margin: 5,
-  },
+    width: 165,
+    height: 165,
+  }
 });
 
 export default App;
