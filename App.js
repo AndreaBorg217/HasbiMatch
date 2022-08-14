@@ -38,7 +38,7 @@ const App = () => {
   }
 
   const checkWinner = () =>{
-    if(matched.current.length == 8){
+    if(matched.length = 8){
       console.log('WINNER')
     }
   }
