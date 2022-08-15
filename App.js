@@ -45,11 +45,13 @@ const App = () => {
 
 
       const handleClick =  (index) => {
-        let temp, timeout = 0
-        if(active.current == null){ //first card picked
+        let temp
+        if(!matched.current.includes(index)){
+          if(active.current == null){ //first card picked
           let toSwap = toMatch[index]; // flip card
           temp = [...cards];
           temp[index] = toSwap;
+          setCards([...temp])
 
           active.current = Array(2)
           active.current[0] = index;
@@ -60,7 +62,8 @@ const App = () => {
             let toSwap = toMatch[index]; // flip card
             temp = [...cards];
             temp[index] = toSwap; 
-            
+            setCards([...temp])
+
             if(toSwap == active.current[1]){ //cards match
               matched.current = [...matched.current, index, active.current[0]];
               console.log(matched.current)
@@ -72,14 +75,14 @@ const App = () => {
               temp[index] = url;
               temp[active.current[0]] = url;
               active.current = null;
+              setTimeout(() => {
+                setCards([...temp])
+              }, 500);
             }
           }
         }
-        setTimeout(() => {
-          setCards([...temp])
-        });
-         
       }
+    }
     
   
   
