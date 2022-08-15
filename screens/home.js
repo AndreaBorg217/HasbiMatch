@@ -36,7 +36,7 @@ const Home = ({navigation}) => {
     },
     name:{
         width: 500,
-        transform: [{translateY: -10}]
+        transform: [{translateY: -5}]
     },
     banner:{
         width: 750,

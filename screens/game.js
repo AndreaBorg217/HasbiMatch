@@ -189,8 +189,8 @@ const Game = ({navigation}) => {
       borderColor: 'black',
       borderWidth: 3,
       borderRadius: 15,
-      transform: [{translateX: 150},{translateY: -150}],
-      margin: 10
+      transform: [{translateY: -150}],
+      margin: 10,
     },
     modalText:{
       color: 'black',
