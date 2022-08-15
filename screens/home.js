@@ -46,7 +46,7 @@ const Home = ({navigation}) => {
         backgroundColor:'#007B81',
         width: 120,
         height: 50,
-        transform: [{translateX: -10},{translateY: -10}],
+        transform: [{translateX: -10}],
         alignItems: 'center',
         justifyContent: 'center',
         borderColor: 'black',
