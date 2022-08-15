@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, {useEffect, useRef} from 'react';
+import React from 'react';
 import {StyleSheet, TouchableOpacity, View,  Image, Text} from 'react-native';
 import Sound from 'react-native-sound';  
  
