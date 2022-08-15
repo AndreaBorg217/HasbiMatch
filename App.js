@@ -8,7 +8,7 @@
  */
 
 import React, {useState, useEffect, useRef} from 'react';
-import {StyleSheet, TouchableOpacity, View, FlatList, Image, Modal, Dimensions, Text} from 'react-native';
+import {StyleSheet, TouchableOpacity, View, FlatList, Image, Modal, Dimensions, Text, Vibration} from 'react-native';
 import {getImages} from './services/images'
 import {chuckle} from './services/sounds'
  
@@ -79,6 +79,7 @@ const App = () => {
               temp[index] = url;
               temp[active.current[0]] = url;
               active.current = null;
+              Vibration.vibrate(400, false);
               setTimeout(() => {
                 setCards([...temp])
               }, 500);
