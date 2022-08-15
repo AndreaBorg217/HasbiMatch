@@ -9,6 +9,7 @@
 
 import React, {useState, useEffect, useRef} from 'react';
 import {StyleSheet, TouchableOpacity, View, FlatList, Image, Modal, Dimensions, Text, Vibration} from 'react-native';
+import Sound from 'react-native-sound';  
 import {getImages} from './services/images'
 import {chuckle} from './services/sounds'
  
@@ -24,7 +25,7 @@ const App = () => {
   const [modalVisible, setModal] = useState(false)
   var active = useRef(null);
   var matched = useRef([])
-
+  var sound = useRef(chuckle)
 
   useEffect(() => {
     setMatches(getImages())
@@ -43,7 +44,7 @@ const App = () => {
   const checkWinner = () =>{
     if(matched.current.length == 8){
       setModal(true)
-      chuckle.play()
+      sound.current.setSpeed(1).play()
     }
   }
 
