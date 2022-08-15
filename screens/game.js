@@ -3,7 +3,6 @@ import React, {useState, useEffect, useRef} from 'react';
 import {StyleSheet, TouchableOpacity, View, FlatList, Image, Modal, Dimensions, Text, Vibration} from 'react-native';
 import Sound from 'react-native-sound';  
 import {getImages} from '../services/images'
-import {chuckle} from '../services/sounds'
  
 const url = 'https://lh3.googleusercontent.com/uz-60YFsWh_Z9TwTBrmRd99qYNOKSNWr5oTe3G1r2_6RM_Xxdlpp8T9uWA1g0BD6Op-bKKCxacvB5OBdT46Jmlqw3dCVyMDeVy6vGIq1c0X0VqI_YXBVnRp4xKRoxq3xBiV6pjylkLTkYrlxPFYdWfEBsg-BMHoee3sNo9WlzgNqlxMRQC5IzOTuyuQgOIhHKTjUa-jbxho2HUtiMvhLt1QdB0__s-IIWpeWg-Etwn5QKzZ4LsHB7QsYWgj9p_dGPn1zz2VzlMpKQtkiOXyCZTmPnj_CSIO_tBV9UeWtJDrDTBcvayIw1bNk5oiG-o0gp0QWYLXLmZEURd7RDgOakm5BUxLwivc_3xTZRWAI9Hv21a7ieMrgWXL2JHGgAz-2qYNwniPIoNYIMtf22RfO6VqgetLvwQGU21tzRnqO2md9DYM-syMCNcSNq3y_DVGhwMTHiS5snFqCk5vEwjNaJiR51nVaP8PbTS5RNcUN-MLRJU7c7jVcipKmg3sgL26fs0dhOjC_WU026jg0ORUoS0LKJ8gHL77957R-FaQKShxIvrHtPuduUPjnEozq_U4EMbV5n3gs0MeEadu3D-AsZRh9iqeRRhAMI6wlOLUFq8eesxlh7er4Eche--sKquFIYu4AQ83WMj_HLXwtHjURmxGtFN8jMeQowhl7iPagfgRCWA0d59iFRrcev322l0bUWCEcdrHYxCCiVyLOosB9rtUcXPI1dbGs--Aj7p2UbboSeJ3GI765dGEvSgIDBQ=w704-h355-no?authuser=0'
 
@@ -16,7 +15,6 @@ const Game = ({navigation}) => {
     const [modalVisible, setModal] = useState(false)
     var active = useRef(null);
     var matched = useRef([])
-    var sound = useRef(chuckle)
   
     useEffect(() => {
       setMatches(getImages())
@@ -35,7 +33,13 @@ const Game = ({navigation}) => {
     const checkWinner = () =>{
       if(matched.current.length == 8){
         setModal(true)
-        sound.current.setSpeed(1).play()
+        var chuckle = new Sound('laugh.mp3', Sound.MAIN_BUNDLE, error => {
+          if (error) {
+            console.log('Failed to load laugh', error);
+            return;
+          }
+          chuckle.setSpeed(1).play()
+         });
       }
     }
   

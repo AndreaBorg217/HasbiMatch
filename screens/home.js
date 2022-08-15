@@ -2,16 +2,19 @@
 import React, {useEffect, useRef} from 'react';
 import {StyleSheet, TouchableOpacity, View,  Image, Text, Dimensions} from 'react-native';
 import Sound from 'react-native-sound';  
-import {hello} from '../services/sounds'
  
 const windowWidth = Dimensions.get('window').width;
 
 const Home = ({navigation}) => {
-    var sound = useRef(hello)
+
   
-    useEffect(() => {
-        sound.current.setSpeed(1).play()
-    }, [])
+  var hello = new Sound('hello.mp3', Sound.MAIN_BUNDLE, error => {
+    if (error) {
+      console.log('Failed to load hello', error);
+      return;
+    }
+    hello.setSpeed(1).setVolume(5).play();
+   });
         
     return (
       <View style={styles.container}>
