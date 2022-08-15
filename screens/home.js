@@ -41,7 +41,7 @@ const Home = ({navigation}) => {
     banner:{
         width: 750,
         height: 200,
-        transform: [{translateY: 5}]
+        transform: [{translateY: 20}]
     },
     button:{
         backgroundColor:'#007B81',
